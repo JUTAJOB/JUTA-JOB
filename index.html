@@ -1,196 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juta Job - जूता कामगार रोजगार</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juta Job Card Poster</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui,sans-serif;background:#f3f6fb;color:#172033}
-header{background:linear-gradient(135deg,#075be8,#123b91);color:#fff;padding:14px 12px 28px}
-.head{max-width:1100px;margin:auto}.logo{font-size:23px;font-weight:800}.sub{font-size:12px;opacity:.85}
-.hero{margin-top:18px}.hero h1{font-size:28px;margin:0 0 7px}.hero p{margin:0;font-size:14px;line-height:1.5}
-nav{max-width:1100px;margin:-15px auto 15px;background:#fff;border-radius:16px;padding:7px;box-shadow:0 5px 20px #12284d18;display:flex;gap:6px;overflow-x:auto}
-nav button{border:0;background:#eef3fb;color:#263b63;border-radius:10px;padding:10px 13px;white-space:nowrap;font-weight:bold;cursor:pointer}
-nav button.active{background:#0760ee;color:white}
-main{max-width:1100px;margin:auto;padding:0 12px 30px}.page{display:none}.page.active{display:block}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:#fff;border-radius:17px;padding:16px;box-shadow:0 5px 18px #10264c0c;border:1px solid #e8edf5}.stat b{font-size:27px}.muted{color:#6d7788;font-size:13px}.title{font-size:21px;font-weight:800;margin:18px 0 10px}
-.jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.job h3{margin:0 0 8px}.pill{display:inline-block;background:#eaf2ff;color:#075be8;border-radius:20px;padding:5px 8px;font-size:11px;font-weight:bold;margin:2px}.job .bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}
-button.primary{background:#0760ee;color:white;border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer}button.success{background:#15945c;color:#fff;border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer}button.secondary{background:#edf3ff;color:#075be8;border:0;border-radius:10px;padding:10px 13px;font-weight:bold;cursor:pointer}
-form{display:grid;gap:12px}label{font-size:13px;font-weight:bold}input,select,textarea{width:100%;padding:12px;border:1px solid #d9e1ec;border-radius:10px;margin-top:5px;font:inherit;background:#fff}textarea{min-height:90px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notice{background:#fff8df;border:1px solid #ffe3a0;border-radius:12px;padding:12px;font-size:13px;margin-bottom:12px}
-.profile{display:flex;gap:12px;align-items:center}.avatar{width:54px;height:54px;border-radius:50%;background:#eaf2ff;display:grid;place-items:center;font-size:25px}
-table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid #edf0f5;text-align:left}th{background:#f7f9fc}
-.empty{text-align:center;padding:25px;color:#727d8f}.actions{display:flex;gap:8px;flex-wrap:wrap}
-footer{text-align:center;color:#788395;padding:20px;font-size:12px}
-@media(max-width:700px){.cards,.jobs,.two{grid-template-columns:1fr}.hero h1{font-size:25px}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui,sans-serif;background:#eef3f9;color:#16213a}
+header{background:linear-gradient(135deg,#082f87,#0a63ed);color:#fff;padding:18px 14px}.wrap{max-width:1100px;margin:auto}
+header h1{margin:0;font-size:25px}header p{margin:6px 0 0;opacity:.9}
+nav{background:#fff;box-shadow:0 4px 15px #10264c18;padding:8px;display:flex;gap:7px;overflow:auto;position:sticky;top:0;z-index:5}
+nav button{border:0;background:#edf3ff;color:#17428e;padding:10px 14px;border-radius:10px;font-weight:700;white-space:nowrap}
+nav button.active{background:#0963ee;color:#fff}
+main{max-width:1100px;margin:18px auto;padding:0 12px}.page{display:none}.page.active{display:block}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:18px}.panel{background:#fff;border-radius:18px;padding:18px;box-shadow:0 5px 20px #10264c10}
+label{display:block;font-weight:700;font-size:13px;margin-bottom:11px}input,select{width:100%;padding:11px;margin-top:5px;border:1px solid #d9e2ef;border-radius:10px;font:inherit}
+button.primary,button.green,button.orange{border:0;color:#fff;padding:11px 15px;border-radius:10px;font-weight:800;cursor:pointer}button.primary{background:#0963ee}button.green{background:#12935c}button.orange{background:#f47700}.actions{display:flex;gap:8px;flex-wrap:wrap}
+h2{margin-top:0}.hint{font-size:12px;color:#6e7888;background:#f7f9fc;padding:10px;border-radius:10px}
+#poster{width:100%;max-width:650px;display:block;margin:auto;border-radius:14px;box-shadow:0 8px 25px #10264c22;background:#fff}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini{background:#fff;border-radius:16px;padding:16px;box-shadow:0 5px 18px #10264c0b}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
- <div class="head">
-  <div class="logo">👞 Juta Job</div><div class="sub">कामगार • मालिक • फैक्ट्री</div>
-  <div class="hero"><h1>जूता उद्योग में काम और कामगार</h1><p>Fitter, Bottom Cutting, Stitching, Finishing और दूसरे जूता कामों के लिए रोजगार प्लेटफॉर्म।</p></div>
- </div>
-</header>
-
-<nav id="nav">
- <button class="active" data-page="home">🏠 Home</button>
- <button data-page="jobs">🔎 Jobs</button>
- <button data-page="worker">🪪 Job Card</button>
- <button data-page="post">🏭 Job डालें</button>
- <button data-page="workers">👷 कामगार</button>
- <button data-page="admin">📊 Admin</button>
-</nav>
+<header><div class="wrap"><h1>👞 JUTA JOB</h1><p>जूता उद्योग के कामगारों के लिए Professional Job Card Poster</p></div></header>
+<nav id="nav"><button class="active" data-page="create">🪪 Job Card बनाएं</button><button data-page="preview">🖼️ Poster देखें</button><button data-page="help">ℹ️ कैसे इस्तेमाल करें</button></nav>
 
 <main>
-<section id="home" class="page active">
- <div class="cards">
-  <div class="card stat"><b id="jobTotal">0</b><div class="muted">Active Jobs</div></div>
-  <div class="card stat"><b id="workerTotal">0</b><div class="muted">Registered Workers</div></div>
-  <div class="card stat"><b>24×7</b><div class="muted">Job Search</div></div>
- </div>
- <div class="title">आज की Jobs</div><div id="homeJobs" class="jobs"></div>
+<section id="create" class="page active">
+<div class="grid">
+<div class="panel">
+<h2>Job Card की जानकारी</h2>
+<form id="form">
+<label>कामगार का नाम<input id="name" required placeholder="जैसे अमित कुमार"></label>
+<label>मोबाइल नंबर<input id="mobile" required maxlength="10" inputmode="numeric" placeholder="10 अंकों का नंबर"></label>
+<label>काम / Skill<select id="skill"><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Upper Making</option><option>Sole Fitting</option><option>Finishing</option><option>Packing</option></select></label>
+<label>अनुभव<input id="exp" placeholder="जैसे 5 साल"></label>
+<label>शहर / जिला<input id="place" placeholder="जैसे Agra, Uttar Pradesh"></label>
+<label>मजदूरी<input id="wage" placeholder="₹500 / दिन"></label>
+<label>स्थिति<select id="status"><option>काम चाहिए</option><option>काम पर हूँ</option></select></label>
+<label>कामगार की फोटो<input id="photo" type="file" accept="image/*"></label>
+<div class="actions"><button class="primary" type="submit">🪪 Card तैयार करें</button><button class="green" type="button" id="download">⬇️ Poster डाउनलोड</button></div>
+</form>
+<p class="hint">फोटो लगाकर Card तैयार करें। Download बटन से पूरा Job Card एक Poster Image (PNG) के रूप में सेव किया जा सकता है।</p>
+</div>
+<div class="panel"><canvas id="poster" width="1200" height="760"></canvas></div>
+</div>
 </section>
 
-<section id="jobs" class="page">
- <div class="card">
-  <div class="title" style="margin-top:0">🔎 काम खोजें</div>
-  <div class="two">
-   <label>काम<select id="skillFilter"><option value="">सभी काम</option><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Upper Making</option><option>Sole Fitting</option><option>Finishing</option><option>Packing</option></select></label>
-   <label>शहर/जिला<input id="placeFilter" placeholder="जैसे Agra"></label>
-  </div>
-  <div class="actions" style="margin-top:10px"><button class="primary" id="searchBtn">Jobs खोजें</button><button class="secondary" id="clearSearch">Reset</button></div>
- </div>
- <div class="title">Available Jobs</div><div id="jobList" class="jobs"></div>
-</section>
+<section id="preview" class="page"><div class="panel"><h2>🖼️ आपका Job Card Poster</h2><canvas id="poster2" width="1200" height="760" style="width:100%;border-radius:14px"></canvas><br><button class="green" id="download2">⬇️ PNG डाउनलोड करें</button></div></section>
 
-<section id="worker" class="page">
- <div class="card">
-  <div class="profile"><div class="avatar">👷</div><div><h2 style="margin:0">अपना Job Card बनाएं</h2><div class="muted">जानकारी भरें और कार्ड सेव करें</div></div></div>
-  <form id="workerForm" style="margin-top:16px">
-   <div class="two"><label>नाम<input id="wName" required></label><label>मोबाइल<input id="wMobile" required inputmode="numeric" maxlength="10"></label></div>
-   <div class="two"><label>काम<select id="wSkill"><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Upper Making</option><option>Sole Fitting</option><option>Finishing</option><option>Packing</option></select></label><label>अनुभव<input id="wExp" placeholder="जैसे 5 साल"></label></div>
-   <div class="two"><label>शहर/जिला<input id="wPlace" required></label><label>मजदूरी<input id="wWage" placeholder="₹500/दिन या ₹2/जोड़ी"></label></div>
-   <label>स्थिति<select id="wStatus"><option>काम चाहिए</option><option>काम पर हूँ</option></select></label>
-   <button class="success" type="submit">🪪 Job Card बनाएं</button>
-  </form>
- </div>
- <div id="savedWorker" style="margin-top:12px"></div>
-</section>
-
-<section id="post" class="page">
- <div class="card">
-  <div class="title" style="margin-top:0">🏭 मालिक / फैक्ट्री — Job पोस्ट करें</div>
-  <form id="jobForm">
-   <div class="two"><label>काम<select id="jSkill"><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Upper Making</option><option>Sole Fitting</option><option>Finishing</option><option>Packing</option></select></label><label>मालिक/फैक्ट्री<input id="jOwner" required></label></div>
-   <div class="two"><label>स्थान<input id="jPlace" required></label><label>मजदूरी<input id="jWage" required placeholder="₹500/दिन"></label></div>
-   <div class="two"><label>कितने कामगार<input id="jPeople" type="number" min="1" value="1"></label><label>काम शुरू<input id="jDate" type="date"></label></div>
-   <label>मोबाइल<input id="jMobile" required inputmode="numeric" maxlength="10"></label>
-   <label>विवरण<textarea id="jDesc" placeholder="काम की पूरी जानकारी"></textarea></label>
-   <button class="primary" type="submit">📢 Job पोस्ट करें</button>
-  </form>
- </div>
-</section>
-
-<section id="workers" class="page">
- <div class="card">
-  <div class="title" style="margin-top:0">👷 कामगार खोजें</div>
-  <div class="two"><label>काम<select id="workerSkillFilter"><option value="">सभी काम</option><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Upper Making</option><option>Sole Fitting</option><option>Finishing</option><option>Packing</option></select></label><label>स्थान<input id="workerPlaceFilter" placeholder="शहर/जिला"></label></div>
- </div>
- <div class="title">काम के लिए उपलब्ध कामगार</div><div id="workerList" class="cards"></div>
-</section>
-
-<section id="admin" class="page">
- <div class="notice">यह Demo version है। डेटा इसी ब्राउज़र में सेव होता है। असली ऑनलाइन वेबसाइट के लिए Database + Login/OTP + सुरक्षित Admin access जोड़ना होगा।</div>
- <div class="cards">
-  <div class="card stat"><b id="adminJobs">0</b><div class="muted">Total Jobs</div></div>
-  <div class="card stat"><b id="adminWorkers">0</b><div class="muted">Total Workers</div></div>
-  <div class="card stat"><b id="adminApplications">0</b><div class="muted">Applications</div></div>
- </div>
- <div class="title">Jobs Manage करें</div>
- <div class="card"><div style="overflow:auto"><table><thead><tr><th>काम</th><th>स्थान</th><th>मालिक</th><th>Action</th></tr></thead><tbody id="adminJobTable"></tbody></table></div></div>
-</section>
+<section id="help" class="page"><div class="cards">
+<div class="mini"><b>1️⃣ जानकारी भरें</b><p>नाम, Skill, अनुभव, स्थान और मजदूरी भरें।</p></div>
+<div class="mini"><b>2️⃣ फोटो लगाएं</b><p>कामगार की साफ फोटो चुनें।</p></div>
+<div class="mini"><b>3️⃣ Poster डाउनलोड करें</b><p>Job Card को PNG में डाउनलोड करके WhatsApp/Facebook पर शेयर करें।</p></div>
+</div></section>
 </main>
-<footer>© 2026 Juta Job • जूता कामगार रोजगार प्लेटफॉर्म</footer>
 
 <script>
-const KEY={jobs:"jj_jobs_v2",workers:"jj_workers_v2",apps:"jj_apps_v2"};
-const seedJobs=[
-{id:1,skill:"Fitter",owner:"Agra Footwear",place:"Agra",wage:"₹500/दिन",people:3,mobile:"9876543210",desc:"जूता fitting का काम"},
-{id:2,skill:"Bottom Cutting",owner:"Shree Shoes",place:"Agra",wage:"₹2.50/जोड़ी",people:5,mobile:"9876543211",desc:"Bottom cutting अनुभवी कामगार चाहिए"},
-{id:3,skill:"Stitching",owner:"City Footwear",place:"Sikandra",wage:"₹450/दिन",people:2,mobile:"9876543212",desc:"Upper stitching"}
-];
-let jobs=JSON.parse(localStorage.getItem(KEY.jobs)||"null")||seedJobs;
-let workers=JSON.parse(localStorage.getItem(KEY.workers)||"[]");
-let apps=JSON.parse(localStorage.getItem(KEY.apps)||"[]");
-
 const $=id=>document.getElementById(id);
-function save(){localStorage.setItem(KEY.jobs,JSON.stringify(jobs));localStorage.setItem(KEY.workers,JSON.stringify(workers));localStorage.setItem(KEY.apps,JSON.stringify(apps));}
-function page(id){
- document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
- $(id).classList.add("active");
- document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===id));
- renderAll();scrollTo({top:0,behavior:"smooth"});
-}
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>page(b.dataset.page));
+let img=null, card={name:"अमित कुमार",mobile:"9876543210",skill:"Bottom Cutting",exp:"5 साल",place:"Agra, Uttar Pradesh",wage:"₹550 / दिन",status:"काम चाहिए",id:"JJ2026052001"};
 
-function jobCard(j){
- return `<div class="card job"><h3>👞 ${escapeHtml(j.skill)}</h3>
- <span class="pill">${j.people} कामगार</span><span class="pill">${escapeHtml(j.wage)}</span>
- <p class="muted">🏭 ${escapeHtml(j.owner)}<br>📍 ${escapeHtml(j.place)}<br>${escapeHtml(j.desc||"")}</p>
- <div class="bottom"><button class="primary" onclick="applyJob(${j.id})">काम के लिए Apply</button><small>#JOB${String(j.id).padStart(4,"0")}</small></div></div>`;
+function draw(canvas){
+ const c=canvas.getContext("2d"),W=1200,H=760;
+ c.clearRect(0,0,W,H);
+ // background
+ c.fillStyle="#f4f7fb";c.fillRect(0,0,W,H);
+ c.fillStyle="#0a3b98";c.fillRect(0,0,W,125);
+ c.fillStyle="#ffffff";c.font="800 45px Arial";c.fillText("👞 JUTA JOB",55,62);
+ c.font="700 22px Arial";c.fillText("कामगार रोजगार • JOB CARD",55,98);
+ // card body
+ c.fillStyle="#ffffff";c.roundRect(35,150,1130,560,24);c.fill();
+ c.strokeStyle="#dce5f1";c.lineWidth=3;c.stroke();
+ // title
+ c.fillStyle="#13254a";c.font="800 32px Arial";c.fillText("WORKER JOB CARD",370,205);
+ c.fillStyle="#11945c";c.roundRect(970,175,150,46,23);c.fill();
+ c.fillStyle="#fff";c.font="700 20px Arial";c.fillText("✓ VERIFIED",988,205);
+ // photo
+ c.fillStyle="#e9f0f8";c.roundRect(70,235,245,300,16);c.fill();
+ if(img){c.save();c.beginPath();c.roundRect(70,235,245,300,16);c.clip();c.drawImage(img,70,235,245,300);c.restore();}
+ else {c.fillStyle="#718096";c.font="700 24px Arial";c.fillText("PHOTO",145,390);c.font="18px Arial";c.fillText("यहाँ फोटो दिखाई देगी",105,425);}
+ // info
+ let x=365,y=275;
+ const rows=[["नाम",card.name],["काम / Skill",card.skill],["अनुभव",card.exp||"—"],["मोबाइल",card.mobile],["स्थान",card.place||"—"],["मजदूरी",card.wage||"—"],["उपलब्धता",card.status]];
+ rows.forEach((r,i)=>{
+   c.fillStyle="#6b7483";c.font="700 20px Arial";c.fillText(r[0],x,y+i*50);
+   c.fillStyle="#17233c";c.font="700 22px Arial";c.fillText(":  "+r[1],530,y+i*50);
+ });
+ // id / qr-like code
+ c.fillStyle="#f0f5ff";c.roundRect(930,555,190,105,12);c.fill();
+ c.fillStyle="#123d92";c.font="700 18px Arial";c.fillText("JOB CARD ID",950,585);
+ c.font="800 20px Arial";c.fillText(card.id,950,617);
+ // pseudo QR pattern
+ let qx=810,qy=565,s=5;
+ c.fillStyle="#14233f";
+ for(let i=0;i<11;i++)for(let j=0;j<11;j++)if(((i*j+i+j*3)%5)<2)c.fillRect(qx+i*s,qy+j*s,s,s);
+ c.fillStyle="#6b7483";c.font="16px Arial";c.fillText("Juta Job • रोजगार के लिए",70,670);
+ c.fillStyle="#0a3b98";c.font="700 18px Arial";c.fillText("कामगार की जानकारी सत्यापित करके ही काम दें।",365,680);
 }
-function renderJobs(){
- let skill=$("skillFilter").value.toLowerCase(),place=$("placeFilter").value.trim().toLowerCase();
- let arr=jobs.filter(j=>(!skill||j.skill.toLowerCase()===skill)&&(!place||j.place.toLowerCase().includes(place)));
- $("jobList").innerHTML=arr.length?arr.map(jobCard).join(""):'<div class="card empty">कोई Job नहीं मिली।</div>';
- $("homeJobs").innerHTML=jobs.slice(0,6).map(jobCard).join("");
-}
-function renderWorkers(){
- let skill=$("workerSkillFilter").value.toLowerCase(),place=$("workerPlaceFilter").value.trim().toLowerCase();
- let arr=workers.filter(w=>(!skill||w.skill.toLowerCase()===skill)&&(!place||w.place.toLowerCase().includes(place)));
- $("workerList").innerHTML=arr.length?arr.map(w=>`<div class="card"><div class="profile"><div class="avatar">👷</div><div><h3 style="margin:0">${escapeHtml(w.name)}</h3><div class="muted">${escapeHtml(w.skill)} • ${escapeHtml(w.exp||"अनुभव नहीं बताया")}</div></div></div><p class="muted">📍 ${escapeHtml(w.place)}<br>💰 ${escapeHtml(w.wage||"रेट बात करके")}<br>🟢 ${escapeHtml(w.status)}</p><button class="primary" onclick="contactWorker('${w.mobile}')">📞 संपर्क करें</button></div>`).join(""):'<div class="card empty">अभी कोई कामगार registered नहीं है।</div>';
-}
-function renderWorkerCard(){
- let w=workers[workers.length-1]; if(!w){$("savedWorker").innerHTML="";return}
- $("savedWorker").innerHTML=`<div class="card"><div class="profile"><div class="avatar">🪪</div><div><h2 style="margin:0">${escapeHtml(w.name)}</h2><div class="muted">Job Card ID: <b>${w.id}</b></div></div></div><p>👞 <b>काम:</b> ${escapeHtml(w.skill)}<br>📍 <b>स्थान:</b> ${escapeHtml(w.place)}<br>⏳ <b>अनुभव:</b> ${escapeHtml(w.exp||"—")}<br>💰 <b>मजदूरी:</b> ${escapeHtml(w.wage||"—")}<br>🟢 <b>स्थिति:</b> ${escapeHtml(w.status)}<br>📞 <b>मोबाइल:</b> ${escapeHtml(w.mobile)}</p><div class="actions"><button class="secondary" onclick="window.print()">🖨️ Print / PDF</button><button class="primary" onclick="shareCard()">📤 Share</button></div></div>`;
-}
-function renderAdmin(){
- $("adminJobs").textContent=jobs.length;$("adminWorkers").textContent=workers.length;$("adminApplications").textContent=apps.length;
- $("adminJobTable").innerHTML=jobs.map(j=>`<tr><td>${escapeHtml(j.skill)}</td><td>${escapeHtml(j.place)}</td><td>${escapeHtml(j.owner)}</td><td><button class="secondary" onclick="deleteJob(${j.id})">Delete</button></td></tr>`).join("");
-}
-function renderAll(){
- $("jobTotal").textContent=jobs.length;$("workerTotal").textContent=workers.length;
- renderJobs();renderWorkers();renderWorkerCard();renderAdmin();
-}
-$("searchBtn").onclick=renderJobs;
-$("clearSearch").onclick=()=>{$("skillFilter").value="";$("placeFilter").value="";renderJobs()};
-$("workerSkillFilter").onchange=renderWorkers;$("workerPlaceFilter").oninput=renderWorkers;
-
-$("jobForm").onsubmit=e=>{
- e.preventDefault();
- jobs.unshift({id:Date.now(),skill:$("jSkill").value,owner:$("jOwner").value,place:$("jPlace").value,wage:$("jWage").value,people:$("jPeople").value,mobile:$("jMobile").value,desc:$("jDesc").value});
- save();e.target.reset();alert("✅ Job सफलतापूर्वक पोस्ट हो गई!");page("jobs");
-};
-$("workerForm").onsubmit=e=>{
- e.preventDefault();
- if(!/^\d{10}$/.test($("wMobile").value)){alert("कृपया 10 अंकों का मोबाइल नंबर डालें");return}
- let w={id:"JJ"+String(Date.now()).slice(-8),name:$("wName").value,mobile:$("wMobile").value,skill:$("wSkill").value,exp:$("wExp").value,place:$("wPlace").value,wage:$("wWage").value,status:$("wStatus").value};
- workers.push(w);save();alert("✅ Job Card तैयार हो गया!");renderAll();
-};
-function applyJob(id){
- let j=jobs.find(x=>x.id===id);
- if(!workers.length){alert("पहले Job Card बनाएं।");page("worker");return}
- let w=workers[workers.length-1];
- if(apps.some(a=>a.jobId===id&&a.workerId===w.id)){alert("आप इस Job के लिए पहले ही Apply कर चुके हैं।");return}
- apps.push({jobId:id,workerId:w.id,date:new Date().toLocaleString("hi-IN")});save();
- alert("✅ Application भेज दी गई!\\n\\nमालिक: "+j.owner+"\\nकाम: "+j.skill+"\\nस्थान: "+j.place);
-}
-function contactWorker(m){if(confirm("क्या WhatsApp पर संपर्क करना है?")) location.href="https://wa.me/91"+m.replace(/\D/g,"")}
-function deleteJob(id){if(confirm("क्या यह Job हटानी है?")){jobs=jobs.filter(j=>j.id!==id);save();renderAll()}}
-async function shareCard(){if(navigator.share) await navigator.share({title:"Juta Job Card",text:"मेरा Juta Job Card"});else alert("Share सुविधा इस ब्राउज़र में उपलब्ध नहीं है।")}
-function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-renderAll();
+function render(){draw($("poster"));draw($("poster2"))}
+$("form").onsubmit=e=>{e.preventDefault();card={name:$("name").value,mobile:$("mobile").value,skill:$("skill").value,exp:$("exp").value,place:$("place").value,wage:$("wage").value,status:$("status").value,id:"JJ"+Date.now().toString().slice(-10)};render();alert("✅ Job Card Poster तैयार हो गया!");show("preview")}
+$("photo").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{img=new Image();img.onload=render;img.src=r.result};r.readAsDataURL(f)}
+function dl(canvas){const a=document.createElement("a");a.download="Juta-Job-Card-"+card.id+".png";a.href=canvas.toDataURL("image/png");a.click()}
+$("download").onclick=()=>dl($("poster"));$("download2").onclick=()=>dl($("poster2"));
+function show(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.page===id));render();scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>show(b.dataset.page));
+if(CanvasRenderingContext2D.prototype.roundRect===undefined){CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){this.beginPath();this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()}}
+render();
 </script>
 </body>
 </html>
