@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Juta Job • जूता कामगार रोजगार</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f4f7fb;color:#182230}
+header{background:linear-gradient(135deg,#0b5cff,#153b8f);color:white;padding:18px 16px 28px;border-radius:0 0 24px 24px}
+.top{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto}.brand{font-size:23px;font-weight:800}.badge{background:#ffffff22;padding:7px 11px;border-radius:20px;font-size:12px}
+.hero{max-width:1100px;margin:25px auto 0}.hero h1{font-size:31px;margin:0 0 8px}.hero p{margin:0;color:#dbe7ff}
+nav{max-width:1100px;margin:-15px auto 18px;background:white;border-radius:16px;padding:9px;box-shadow:0 8px 25px #172b4d18;display:flex;gap:7px;overflow:auto}
+nav button{border:0;background:#eef3ff;padding:11px 15px;border-radius:12px;font-weight:700;white-space:nowrap;color:#183b83;cursor:pointer}
+nav button.active{background:#0b5cff;color:#fff}
+main{max-width:1100px;margin:auto;padding:0 14px 35px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 5px 20px #172b4d0d;border:1px solid #e8edf5}.stat b{font-size:28px}.stat span{display:block;color:#687386;font-size:13px;margin-top:4px}
+.section{margin:20px 0 12px;font-size:21px;font-weight:800}.jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.job h3{margin:0 0 8px}.tag{display:inline-block;background:#eaf2ff;color:#0b5cff;border-radius:20px;padding:5px 9px;font-size:12px;font-weight:700;margin:3px}.muted{color:#687386;font-size:14px}.btn{border:0;background:#0b5cff;color:white;border-radius:11px;padding:10px 14px;font-weight:750;cursor:pointer}.btn.green{background:#12965d}.btn.light{background:#eef3ff;color:#0b5cff}.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.job .row{justify-content:space-between;margin-top:13px}
+form{display:grid;gap:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:13px;font-weight:700}input,select,textarea{width:100%;margin-top:5px;padding:12px;border:1px solid #dce3ed;border-radius:11px;font:inherit;background:#fff}textarea{min-height:90px;resize:vertical}
+.hidden{display:none}.notice{background:#fff8df;border:1px solid #ffe7a1;padding:12px;border-radius:13px;font-size:13px;margin-bottom:14px}
+.profile{display:flex;gap:14px;align-items:center}.avatar{width:54px;height:54px;border-radius:50%;background:#eaf2ff;display:grid;place-items:center;font-size:25px}
+footer{text-align:center;color:#718096;padding:25px;font-size:13px}
+@media(max-width:760px){.grid,.jobs,.two{grid-template-columns:1fr}.hero h1{font-size:26px}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top"><div class="brand">👞 Juta Job</div><div class="badge">कामगार • मालिक • फैक्ट्री</div></div>
+ <div class="hero"><h1>जूता उद्योग में काम और कामगार</h1><p>Fitter, Bottom Cutting, Stitching और दूसरे कामों के लिए आसान रोजगार प्लेटफॉर्म।</p></div>
+</header>
+
+<nav>
+ <button class="active" onclick="show('home',this)">🏠 Home</button>
+ <button onclick="show('jobs',this)">🔎 Jobs</button>
+ <button onclick="show('worker',this)">👷 Job Card</button>
+ <button onclick="show('post',this)">🏭 Job डालें</button>
+ <button onclick="show('admin',this)">📊 Admin</button>
+</nav>
+
+<main>
+<section id="home">
+ <div class="grid">
+  <div class="card stat"><b id="jobCount">3</b><span>Active Jobs</span></div>
+  <div class="card stat"><b id="workerCount">12</b><span>Registered Workers</span></div>
+  <div class="card stat"><b>24×7</b><span>Job Search</span></div>
+ </div>
+ <div class="section">आज की Jobs</div>
+ <div class="jobs" id="homeJobs"></div>
+</section>
+
+<section id="jobs" class="hidden">
+ <div class="card">
+  <div class="section" style="margin-top:0">🔎 काम खोजें</div>
+  <div class="two">
+   <label>काम
+    <select id="filterSkill" onchange="renderJobs()"><option value="">सभी काम</option><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Finishing</option><option>Packing</option></select>
+   </label>
+   <label>स्थान<input id="filterPlace" oninput="renderJobs()" placeholder="जैसे Agra"></label>
+  </div>
+ </div>
+ <div class="section">Available Jobs</div><div class="jobs" id="jobsList"></div>
+</section>
+
+<section id="worker" class="hidden">
+ <div class="card">
+  <div class="profile"><div class="avatar">👷</div><div><h2 style="margin:0">मेरा Job Card</h2><div class="muted">हर कामगार का अपना कार्ड</div></div></div>
+  <hr style="border:0;border-top:1px solid #edf0f5;margin:18px 0">
+  <form onsubmit="saveWorker(event)">
+   <div class="two"><label>नाम<input id="wname" required placeholder="पूरा नाम"></label><label>मोबाइल<input id="wmobile" required inputmode="numeric" placeholder="10 अंकों का नंबर"></label></div>
+   <div class="two"><label>काम<select id="wskill"><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Finishing</option><option>Packing</option></select></label><label>अनुभव<input id="wexp" placeholder="जैसे 3 साल"></label></div>
+   <div class="two"><label>जिला/शहर<input id="wplace" placeholder="जैसे Agra"></label><label>मजदूरी<input id="wage" placeholder="₹ प्रति दिन / जोड़ी"></label></div>
+   <label>उपलब्धता<select id="wstatus"><option>काम चाहिए</option><option>काम पर हूँ</option></select></label>
+   <button class="btn" type="submit">🪪 Job Card बनाएं</button>
+  </form>
+ </div>
+ <div id="workerCard" style="margin-top:14px"></div>
+</section>
+
+<section id="post" class="hidden">
+ <div class="card">
+  <div class="section" style="margin-top:0">🏭 नया काम पोस्ट करें</div>
+  <form onsubmit="addJob(event)">
+   <div class="two"><label>काम का नाम<select id="jskill"><option>Fitter</option><option>Bottom Cutting</option><option>Stitching</option><option>Finishing</option><option>Packing</option></select></label><label>मालिक/फैक्ट्री<input id="jowner" required placeholder="नाम"></label></div>
+   <div class="two"><label>स्थान<input id="jplace" required placeholder="शहर/जिला"></label><label>मजदूरी<input id="jwage" required placeholder="₹"></label></div>
+   <div class="two"><label>कितने कामगार<input id="jpeople" type="number" min="1" value="1"></label><label>काम शुरू<input id="jdate" type="date"></label></div>
+   <label>विवरण<textarea id="jdesc" placeholder="काम की जानकारी"></textarea></label>
+   <button class="btn green" type="submit">📢 Job पोस्ट करें</button>
+  </form>
+ </div>
+</section>
+
+<section id="admin" class="hidden">
+ <div class="notice">Demo Admin Panel: यह संस्करण ब्राउज़र में डेटा सेव करता है। असली वेबसाइट में Login, Database और सुरक्षित Admin access जोड़ना होगा।</div>
+ <div class="grid"><div class="card stat"><b id="aJobs">3</b><span>Total Jobs</span></div><div class="card stat"><b id="aWorkers">12</b><span>Total Workers</span></div><div class="card stat"><b>₹0</b><span>आपकी कमाई (Demo)</span></div></div>
+ <div class="section">कमाई का मॉडल</div>
+ <div class="card"><p><b>Job Card:</b> ₹20 • <b>Job Post:</b> ₹49 • <b>Factory Premium:</b> ₹199/माह</p><p class="muted">शुरुआत में मजदूरों के लिए मुफ्त रखना बेहतर रहेगा।</p></div>
+</section>
+</main>
+<footer>© 2026 Juta Job • जूता कामगार रोजगार प्लेटफॉर्म</footer>
+
+<script>
+const defaultJobs=[
+ {skill:"Fitter",owner:"Agra Footwear",place:"Agra",wage:"₹500/दिन",people:3,desc:"जूता fitting का काम"},
+ {skill:"Bottom Cutting",owner:"Shree Shoes",place:"Agra",wage:"₹2.50/जोड़ी",people:5,desc:"Bottom cutting अनुभवी कामगार चाहिए"},
+ {skill:"Stitching",owner:"City Footwear",place:"Sikandra",wage:"₹450/दिन",people:2,desc:"Upper stitching"}
+];
+let jobs=JSON.parse(localStorage.getItem("jutaJobs")||"null")||defaultJobs;
+function card(j,i){
+ return `<div class="card job"><h3>👞 ${j.skill}</h3><div class="tag">${j.people} कामगार</div><div class="tag">${j.wage}</div><p class="muted">🏭 ${j.owner}<br>📍 ${j.place}<br>${j.desc||""}</p><div class="row"><button class="btn" onclick="apply('${j.skill}','${j.place}')">काम के लिए Apply</button><span class="muted">#JOB${String(i+1).padStart(4,'0')}</span></div></div>`;
+}
+function renderJobs(){
+ let skill=filterSkill.value.toLowerCase(), place=filterPlace.value.toLowerCase();
+ let arr=jobs.filter(j=>(!skill||j.skill.toLowerCase()==skill)&&(!place||j.place.toLowerCase().includes(place)));
+ jobsList.innerHTML=arr.length?arr.map((j,i)=>card(j,i)).join(""):'<div class="card"><b>अभी कोई Job नहीं मिली।</b></div>';
+ homeJobs.innerHTML=jobs.slice(0,3).map(card).join("");
+ jobCount.textContent=jobs.length;aJobs.textContent=jobs.length;
+}
+function addJob(e){
+ e.preventDefault();
+ jobs.unshift({skill:jskill.value,owner:jowner.value,place:jplace.value,wage:jwage.value,people:jpeople.value,desc:jdesc.value});
+ localStorage.setItem("jutaJobs",JSON.stringify(jobs));e.target.reset();renderJobs();alert("Job सफलतापूर्वक पोस्ट हो गई!");
+ show("jobs",document.querySelectorAll("nav button")[1]);
+}
+function saveWorker(e){
+ e.preventDefault();
+ let w={name:wname.value,mobile:wmobile.value,skill:wskill.value,exp:wexp.value,place:wplace.value,wage:wage.value,status:wstatus.value,id:"JJ"+Date.now().toString().slice(-6)};
+ localStorage.setItem("jutaWorker",JSON.stringify(w));workerCard.innerHTML=`<div class="card"><div class="profile"><div class="avatar">🪪</div><div><h2 style="margin:0">${w.name}</h2><div class="muted">Job Card: <b>${w.id}</b></div></div></div><p>👞 <b>काम:</b> ${w.skill}<br>📍 <b>स्थान:</b> ${w.place}<br>⏳ <b>अनुभव:</b> ${w.exp||"—"}<br>💰 <b>मजदूरी:</b> ${w.wage||"—"}<br>🟢 <b>Status:</b> ${w.status}<br>📞 <b>मोबाइल:</b> ${w.mobile}</p><button class="btn light" onclick="window.print()">🖨️ Print / Save PDF</button></div>`;
+ alert("आपका Job Card तैयार है!");
+}
+function apply(skill,place){alert("Apply request भेजने के लिए असली version में Login/OTP और मालिक का सुरक्षित contact जोड़ा जाएगा।\\n\\nकाम: "+skill+"\\nस्थान: "+place);}
+function show(id,btn){document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));btn.classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+renderJobs();
+</script>
+</body>
+</html>
